@@ -10,4 +10,6 @@ public interface List<T> {
 
     int size();
 
+    void push(T nodeToInsert);
+
 }
