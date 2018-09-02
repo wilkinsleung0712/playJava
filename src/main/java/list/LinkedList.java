@@ -116,6 +116,37 @@ public class LinkedList implements List<ListNode> {
 
         return previousNode;
     }
+
+    public ListNode deleteFromLast(int positionFromLast) {
+        int count = 1;
+        ListNode pTemp = headNode, pNthNode = null;
+
+        // use for loop to get to the position where we need to do the delete
+        // then use two pointer as they are gap is in the R-L=positionFromLast
+        // so we can delete the position
+        for (int i = 1; i < positionFromLast; count++) {
+            if (pTemp != null) {
+                pTemp = pTemp.getNext();
+            }
+        }
+
+        // position is not the last one
+        while (pTemp != null) {
+            if (pNthNode == null) {
+                pNthNode = headNode;
+            } else {
+                pNthNode = headNode.getNext();
+            }
+
+            pTemp = pTemp.getNext();
+        }
+
+        if (pNthNode != null) {
+            return pNthNode;
+        }
+
+        return null;
+    }
 }
 
 class ListNode<T> {
